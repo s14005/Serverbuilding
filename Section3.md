@@ -23,8 +23,7 @@
    end  
 5. hostsファイルを作る  
    `$vi hosts`  
-     ↓書き込み
-   [all]  
+     ↓書き込み  
    (自分のサーバーのIPアドレス)  
    または`$ echo 自分のサーバーのIPアドレス > hosts`  
 6. playbook.ymlを作成。同じ場所にnginx,php-fpm,wordpressディレクトリを作成  
