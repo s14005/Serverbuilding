@@ -11,7 +11,6 @@
    Vagrant.configure(2) do |config|  
    これを追加→config.vm.network :private_network,      ip:"192.168.58.129"  
    end  
-
 4. Vagrantを起動  
    `$vagrant up`
 5. Vagrantに接続  
