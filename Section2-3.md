@@ -19,19 +19,19 @@
 ##2-2 Wordpressを動かす
 ##プロキシの設定
 
-1. プロキシの設定
-   $vi /etc/profileファイルを開く
-       ↓を追加
-   PROXY='172.16.40.1:8888'
-   export http_proxy=$PROXY
-   export HTTP_PROXY=$PROXY
-   export HTTPS_PROXY=$PROXY
-   export https_proxy=$PROXY
-2. yumにプロキシを設定
-   `$sudo vi /etc/yum.conf`ファイルを開く
-       ↓を追加
-   proxy=http://172.16.40.1:8888/
-3. wgetにプロキシの設定
+1. プロキシの設定  
+   $vi /etc/profileファイルを開く  
+       ↓を追加  
+   PROXY='172.16.40.1:8888'  
+   export http_proxy=$PROXY  
+   export HTTP_PROXY=$PROXY  
+   export HTTPS_PROXY=$PROXY  
+   export https_proxy=$PROXY  
+2. yumにプロキシを設定  
+   `$sudo vi /etc/yum.conf`ファイルを開く  
+       ↓を追加  
+   proxy=http://172.16.40.1:8888/  
+3. wgetにプロキシの設定  
    `$sudo vi /etc/wgetrc`ファイルを開く
     ↓を追加
    http_proxy = 172.16.40.1:8888/
