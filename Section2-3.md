@@ -6,15 +6,15 @@
    `$vagrant box add CentOS7 コピーしたbox ファイル --force`
 3. 作業用のディレクトリを作成してその中でVagrantの初期設定を行います  
    `$vagrant init CentOS7` 
-3. ホストオンリーアダプターの設定
-   `$vi Vagrantfile`で開いて
-   Vagrant.configure(2) do |config|
-   これを追加→config.vm.network :private_network,      ip:"192.168.58.129"
-   end
+3. ホストオンリーアダプターの設定  
+   `$vi Vagrantfile`で開いて  
+   Vagrant.configure(2) do |config|  
+   これを追加→config.vm.network :private_network,      ip:"192.168.58.129"  
+   end  
 
-4. Vagrantを起動
+4. Vagrantを起動  
    `$vagrant up`
-5. Vagrantに接続
+5. Vagrantに接続  
    `$vagrant ssh`
 
 ##2-2 Wordpressを動かす
