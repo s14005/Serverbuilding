@@ -1,0 +1,21 @@
+    - name: root アカウントのパスワードを設定
+      mysql_user:
+              user: root
+              host: localhost
+              password: "{{ mysql_root_password }}"
+    - name: create database
+      mysql_db:
+          name: wordpress
+          state: present
+          login_user: root
+          login_password: vagrant
+
+    - name: create user
+      mysql_user:
+            login_user: root
+            login_password: vagrant
+            name: wordpress
+            password: "{{mysql_db_password}}"
+            priv: "wordpress.*:ALL"
+            host: localhost
+            state: present

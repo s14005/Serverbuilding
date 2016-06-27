@@ -1,0 +1,75 @@
+#- hosts: all
+#  user: vagrant
+#  sudo: yes
+#  tasks:
+    - name: php install
+      yum: name={{ item  }} state=installed
+      with_items:
+        - php
+        - php-fpm
+        - php-gd
+        - php-mysql
+
+    - name: mariadb install
+      yum: name={{ item }} state=installed
+      with_items:
+        - mariadb
+        - mariadb-server
+        - MySQL-python
+
+    - name: nginx
+      yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm state=present
+    - name: nginx install
+      yum: name=nginx state=installed
+
+    - name: nginx.conf
+      template:
+           src: ../vars/nginx.conf.j2
+           dest: /etc/nginx/nginx.conf
+
+    - name: default.conf
+      template:
+           src: ../vars/default.conf.j2
+           dest: /etc/nginx/conf.d/default.conf
+
+    - name: be sure nginx is running and enabled
+      service: name=nginx state=running enabled=yes
+      tags: nginx
+
+    - name: php-fpm
+      service: name=php-fpm state=running enabled=yes
+      tags: php-fpm
+
+    - name: be sure mysqld is running and enabled
+      service: name=mariadb state=running enabled=yes
+      tags: mariadb
+
+#    - name: root アカウントのパスワードを設定
+#      mysql_user:
+#              user: root
+#              host: localhost
+#              password: "{{ mysql_root_password }}"
+#- name: ~/.my.cnf を配置
+#template:
+#src: my.cnf.j2
+#dest: /home/vagrant/.my.cnf
+#mode: 0600
+
+#    - name: create database
+#      mysql_db:
+#          name: wordpress
+#          state: present
+#          login_user: root
+#          login_password: vagrant
+#
+#    - name: create user
+#      mysql_user:
+#            login_user: root
+#            login_password: vagrant
+#            name: wordpress
+#            password: "{{mysql_db_password}}"
+#            priv: "wordpress.*:ALL"
+#            host: localhost
+#            state: present
+
+
