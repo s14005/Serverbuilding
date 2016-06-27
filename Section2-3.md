@@ -2,9 +2,9 @@
 ##2-1 Vagrantを使用したCentOS 7環境の起動
 ###注意sudoつけていない所がるので自分で必要だと思ったらつけてください
 1. vagrant用のCentOSを先生のUSBからコピー
-2. vagrant用のBOXをforceする
+2. vagrant用のBOXをforceする  
    `$vagrant box add CentOS7 コピーしたbox ファイル --force`
-3. 作業用のディレクトリを作成してその中でVagrantの初期設定を行います
+3. 作業用のディレクトリを作成してその中でVagrantの初期設定を行います  
    `$vagrant init CentOS7` 
 3. ホストオンリーアダプターの設定
    `$vi Vagrantfile`で開いて
