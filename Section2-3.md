@@ -32,21 +32,21 @@
        ↓を追加  
    proxy=http://172.16.40.1:8888/  
 3. wgetにプロキシの設定  
-   `$sudo vi /etc/wgetrc`ファイルを開く
-    ↓を追加
-   http_proxy = 172.16.40.1:8888/
-   https_proxy = 172.16.40.1:8888/
-   ftp_proxy = 172.16.40.1:8888/
-4. yumのアップデート
-   `$sudo yum update`
+   `$sudo vi /etc/wgetrc`ファイルを開く  
+       ↓を追加  
+   http_proxy = 172.16.40.1:8888/  
+   https_proxy = 172.16.40.1:8888/  
+   ftp_proxy = 172.16.40.1:8888/  
+4. yumのアップデート  
+   `$sudo yum update`  
 
 ##nginxのインストル
 
-1. nginxのリポジトリのインストール
-   `$sudo yum install http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm`
-2. nginxのパッケージのインストール
-   `$ sudo yum install --enablerepo=nginx nginx`
-3. 自動起動に設定
+1. nginxのリポジトリのインストール  
+   `$sudo yum install http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm`  
+2. nginxのパッケージのインストール  
+   `$ sudo yum install --enablerepo=nginx nginx`  
+3. 自動起動に設定  
    `$sudo systemctl enable nginx.service`
 4. nginxのサービスを起動
    `$sudo systemctl start nginx`
