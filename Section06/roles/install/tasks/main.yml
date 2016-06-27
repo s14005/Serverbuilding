@@ -13,9 +13,9 @@
     - name: mariadb install
       yum: name={{ item }} state=installed
       with_items:
-        - mariadb
-        - mariadb-server
-        - MySQL-python
+        - mysql
+        - mysql-server
+        - MySQL-python27
 
     - name: nginx
       yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm state=present
@@ -41,8 +41,8 @@
       tags: php-fpm
 
     - name: be sure mysqld is running and enabled
-      service: name=mariadb state=running enabled=yes
-      tags: mariadb
+      service: name=mysqld state=running enabled=yes
+      tags: mysql
 
 #    - name: root アカウントのパスワードを設定
 #      mysql_user:

@@ -1,40 +1,40 @@
 #Section1 基本のサーバー構築
 
 ##1-1 CentOS7のインストール
-1.[Centos7の公式サイト](https://www.centos.org/)の(Get CentOS Now)からダウンロードページに移動
-2.次にダウンロードページの(Minimal ISO)をクリック
-3.CentOS 7 Minimal ISO(x86_64)のISOファイルを選択しダウンロード
+1. [Centos7の公式サイト](https://www.centos.org/)の(Get CentOS Now)からダウンロードページに移動  
+2. 次にダウンロードページの(Minimal ISO)をクリック  
+3. CentOS 7 Minimal ISO(x86_64)のISOファイルを選択しダウンロード  
 
 ##VirtualBoxの設定
-1. virtualBoxを起動
-2. 新規ボタンを押して名前:centos7 タイプ:Linux バージョン:Red Hat(64bit)を設定して次へをクリック
-3. メモリーサイズに1024MB割り当てて次へをクリック
-4. 仮想ハードドライブを作成するを選んで作成をクリック
-5. VDIを選んで次へ可変サイズを選んで次へ
-6. 容量を8Gに設定して作成ををクリックでBox作成完了
-7. Boxの設定をクリック
-8. ホストオンリーアダプターの設定・・・VirtualBoxのファイル(ctr+g)→ネットワーク→ホストオンリーアダプターを選んでホストオンリーアダプターを追加する
+1. virtualBoxを起動  
+2. 新規ボタンを押して名前:centos7 タイプ:Linux バージョン:Red Hat(64bit)を設定して次へをクリック  
+3. メモリーサイズに1024MB割り当てて次へをクリック  
+4. 仮想ハードドライブを作成するを選んで作成をクリック  
+5. VDIを選んで次へ可変サイズを選んで次へ  
+6. 容量を8Gに設定して作成ををクリックでBox作成完了  
+7. Boxの設定をクリック  
+8. ホストオンリーアダプターの設定・・・VirtualBoxのファイル(ctr+g)→ネットワーク→ホストオンリーアダプターを選んでホストオンリーアダプターを追加する  
 9. 作ったcentos7の設定をおしてネットワークの設定に移動してアダプター2をクリック  
     ネットワークアダプターを有効化にチャックを入れる。  
-    割り当て:ホストオンリーアダプターにする
-10. Boxにcentos7のisoイメージをセットする・・・Boxの設定→ストレージを選んぶ→コントローラ：IDEの下のCDのマークをクリック→CD/DVDドライブの右側のCDマークをクリックしてインストールしたCenots7を選ぶ
-11. Boxの設定完了
+    割り当て:ホストオンリーアダプターにする  
+10. Boxにcentos7のisoイメージをセットする・・・Boxの設定→ストレージを選んぶ→コントローラ：IDEの下のCDのマークをクリック→CD/DVDドライブの右側のCDマークをクリックしてインストールしたCenots7を選ぶ  
+11. Boxの設定完了  
 
 ##VirtualBoxにCentos7をインストール
-1. VirtualBoxを起動
-2. install CentOS7を選択
-3. 言語選択で日本語を選択
-4. キーボードのマークをクリックして日本語を削除し英語(us)を追加
-5. インストール先を選んでHDDを選ぶ
-6. インストールの開始をクリック
-7. インストール中にrootのパスワード設定とroot以外のユーザを作成する
+1. VirtualBoxを起動  
+2. install CentOS7を選択  
+3. 言語選択で日本語を選択  
+4. キーボードのマークをクリックして日本語を削除し英語(us)を追加  
+5. インストール先を選んでHDDを選ぶ  
+6. インストールの開始をクリック  
+7. インストール中にrootのパスワード設定とroot以外のユーザを作成する  
 
 ##Centos7の設定
-1. `$vi /etc/sysconfig/network-scripts/ifcfg-enp0s3`のファイルを開いて ONBOOT=onをONBOOT=yesに変更するifcfg-enp0s8のファイルも同じようにする
-2. 設定を反映するために
+1. `$vi /etc/sysconfig/network-scripts/ifcfg-enp0s3`のファイルを開いて ONBOOT=onをONBOOT=yesに変更するifcfg-enp0s8のファイルも同じようにする  
+2. 設定を反映するために  
    `$/etc/sysconfig/network-scripts/ifup enp0s3`  
    `$/etc/sysconfig/network-scripts/ifup enp0s8`  
-   を実行する
+   を実行する  
 3. 設定が反映されてるか確認するため  
    `$ip addr`  
    を実行すると`enp0s8`に`192.168.xxx.xxx`ってアドレスが振られてる  
@@ -130,7 +130,7 @@
     `MySQL データベースのパスワード`  
     `define('DB_PASSWORD', 'password_here');`  
     ↓  
-    `define('DB_PASSWORD', 'mysqlで作ったデータベースの所有者名のパスワード');`
+    `define('DB_PASSWORD', 'mysqlで作ったデータベースの所有者名のパスワード');`  
 
 7. ブラウザからWordpressにアクセス  
    `192.168.xxx.xxx/wordpress/wp-admin/install.php`

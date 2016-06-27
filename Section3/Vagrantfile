@@ -5,28 +5,25 @@
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
-  Vagrant.configure(2) do |config|
-
+Vagrant.configure(2) do |config|
+	if Vagrant.has_plugin?("vagrant-proxyconf")
+		config.proxy.http = ENV['http_proxy']
+		config.proxy.https = ENV['https_proxy']
+		config.proxy.no_proxy = ENV['no_proxy']
+	end
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
-  config.vm.box = "CentOS7"
-  config.vm.network :private_network, ip:"192.168.33.124"
-
-     config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "ansible/Vagrant.yml"
-end
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-#  config.vm.box = "CentOS7"
+  config.vm.box = "CentOS7"
+  config.vm.network "private_network", ip:"192.168.56.129"
 
-#  config.vm.provision "ansible" do |ansible|
-#  ansible.playbook = "~/デスクトップ/Serverbuilding/Section3/ansible/Vagrant.yml"
-#  ansible.inventory_path = "~/デスクトップ/Serverbuilding/Section3/ansible/hosts"
-#  ansible.limit = 'all'
-#  end
-
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "./playbook.yml"
+    ansible.inventory_path = "./hosts"
+  end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
